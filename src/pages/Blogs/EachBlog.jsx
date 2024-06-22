@@ -1,5 +1,7 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
+import styles from "./EachBlog.module.scss";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { toast, Toaster } from "sonner";
 
@@ -47,19 +49,19 @@ const EachBlog = () => {
     }
 
     return (
-        <div>
+        <div className={styles.wrapper}>
             <Link to='/'>Home</Link>
             <Link to='/blogs'>Blogs</Link>
             {loading ?
                 <h1>Loading....</h1> :
-                <>
-                    {val.name}
-                    Visit:<a href={val.url} target="_blank">Blog</a>
+                <div className={styles.innerCont}>
                     <img src={val.thumbnail} />
-                    <button onClick={handleDelete}>Delete Blog</button>
-                    <Link to={`/update/${id}`}>Update Blog</Link>
+                    <h4>{val.name}</h4>
+                    <h4>Visit:<a href={val.url} target="_blank">Blog</a></h4>
+                    <button onClick={handleDelete} className={styles.trigBtn}>Delete Blog</button>
+                    <Link to={`/update/${id}`} className={styles.trigBtn}>Update Blog</Link>
                     <Toaster />
-                </>
+                </div>
             }
         </div>
     );
