@@ -1,8 +1,9 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import FileBase64 from "react-file-base64";
 import { toast, Toaster } from "sonner";
+import styles from "./Upload.module.scss";
 
 const UpdateBlog = () => {
     const { id } = useParams();
@@ -32,20 +33,29 @@ const UpdateBlog = () => {
         upd();
     }
     return (
-        <>
+        <div className={styles.wrapper}>
             <Link to='/'>Home</Link>
             <Link to='/blogs'>Blogs</Link>
-            <form>
-                <input type="text" onChange={(e) => setName(e.target.value)} value={name} />
-                <input type="text" onChange={(e) => setUrl(e.target.value)} value={url} />
-                <FileBase64 type="file" multiple={false} onDone={({ base64 }) => {
-                    setThumbnail(base64);
-                }} />
-                <button onClick={handleUpdate}>Update</button>
+            <form className={styles.form}>
+                <input type="text" className={styles.textbox} placeholder="New Blog Title (optional)" onChange={(e) => setName(e.target.value)} value={name} />
+                <input type="text" className={styles.textbox} placeholder="New Blog Url (optional)" onChange={(e) => setUrl(e.target.value)} value={url} />
+                <div className={styles.thumbCont}>
+                    <h6>Thumbnail(within 40kb)</h6>
+                    <FileBase64 type="file" multiple={false} onDone={({ base64, file }) => {
+                        if ((file.type === "image/png" || file.type === "image/jpeg" || file.type === "image/jpg" || file.type === "image/webp" || file.type === "image/avif") && file.size <= 40 * 1024) {
+                            setThumbnail(base64);
+                        }
+                        else {
+                            toast.error("Invalid file type or file size exceed!!");
+                            setThumbnail("");
+                        }
+                    }} />
+                </div>
+                <button onClick={handleUpdate} className={styles.subBtn}>Update</button>
                 <h1>{loading}</h1>
                 <Toaster />
             </form>
-        </>
+        </div>
     );
 }
 export default UpdateBlog;
