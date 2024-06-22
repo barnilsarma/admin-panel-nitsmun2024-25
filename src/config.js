@@ -1,4 +1,4 @@
-// Import the functions you need from the SDKs you need
+
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
@@ -7,25 +7,27 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
 
-    apiKey: "AIzaSyA04JoimDvgpySY5J7rwCtloh-hKopUzfo",
+    apiKey: import.meta.env.VITE_APIKEY,
 
-    authDomain: "nitsmun-auth-admin.firebaseapp.com",
+    authDomain: import.meta.env.VITE_AUTHADMIN,
 
-    projectId: "nitsmun-auth-admin",
+    projectId: import.meta.env.VITE_PROJECTID,
 
-    storageBucket: "nitsmun-auth-admin.appspot.com",
+    storageBucket: import.meta.env.VITE_STORAGEBUCKET,
 
-    messagingSenderId: "872961742448",
+    messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
 
-    appId: "1:872961742448:web:186ab18cb8ff14f989c6b5",
+    appId: import.meta.env.VITE_APPID,
 
-    measurementId: "G-RKX2Z38C7P"
+    measurementId: import.meta.env.VITE_MEASUREMENTID
 
 };
 
 // Initialize Firebase
+
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
