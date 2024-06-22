@@ -10,19 +10,19 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
 
-    apiKey: import.meta.env.VITE_APIKEY,
+    apiKey: "AIzaSyA04JoimDvgpySY5J7rwCtloh-hKopUzfo",
 
-    authDomain: import.meta.env.VITE_AUTHADMIN,
+    authDomain: "nitsmun-auth-admin.firebaseapp.com",
 
-    projectId: import.meta.env.VITE_PROJECTID,
+    projectId: "nitsmun-auth-admin",
 
-    storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+    storageBucket: "nitsmun-auth-admin.appspot.com",
 
-    messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+    messagingSenderId: "872961742448",
 
-    appId: import.meta.env.VITE_APPID,
+    appId: "1:872961742448:web:186ab18cb8ff14f989c6b5",
 
-    measurementId: import.meta.env.VITE_MEASUREMENTID
+    measurementId: "G-RKX2Z38C7P"
 
 };
 

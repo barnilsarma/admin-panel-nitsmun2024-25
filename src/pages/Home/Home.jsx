@@ -16,8 +16,8 @@ const Home = () => {
         signInWithPopup(auth, provider).then((data) => {
             if (data.user && data.user.email) {
                 const userEmail = data.user.email.toLowerCase();
-                if (userEmail === import.meta.env.VITE_MOD1.toLowerCase() ||
-                    userEmail === import.meta.env.VITE_MOD2.toLowerCase()) {
+                if (userEmail === "barnilsarma@gmail.com" ||
+                    userEmail === "nitsmun@nits.ac.in") {
                     setVal(userEmail);
                     localStorage.setItem("email", userEmail);
                 } else {
